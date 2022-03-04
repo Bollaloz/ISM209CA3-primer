@@ -1,6 +1,6 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
-
 @Entity()
+
 export class Biodatum {
     @PrimaryGeneratedColumn()
     id: number;
@@ -14,7 +14,7 @@ export class Biodatum {
     @Column()
     lastName: string;
 
-    @Column({nullable: true})
+    @Column()
     dateOfBirth: Date;
 
     @Column({nullable: true})
@@ -35,6 +35,4 @@ export class Biodatum {
     @Column({nullable: true})
     profession: string;
 
-    @Column({default: true})
-    isActive: boolean;
 }

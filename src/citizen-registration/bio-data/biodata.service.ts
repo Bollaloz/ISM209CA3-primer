@@ -9,26 +9,33 @@ import { Biodatum } from './entities/biodatum.entity';
 export class BioDataService {
   constructor(
     @InjectRepository(Biodatum)
-    private usersRepository: Repository<Biodatum>
-    ){}
+    private BiodataRepository: Repository<Biodatum>){}
 
-  create(createBioDatumDto: CreateBioDatumDto) {
-    return 'This action adds a new bioDatum';
+  async create(createBioDatumDto: CreateBioDatumDto) {
+    const newBiodata: Biodatum = this.BiodataRepository.create(createBioDatumDto)
+    return this.BiodataRepository.save(newBiodata);
+    //return 'This action adds a new bioDatum';
   }
 
-  findAll() {
-    return `This action returns all bioData`;
+  async findAll() {
+    //return `This action returns all bioData`;
+    return await this.BiodataRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} bioDatum`;
+  async findOne(id: number) {
+    //return `This action returns a #${id} bioDatum`;
+    return await this.BiodataRepository.findOne(id);
   }
 
-  update(id: number, updateBioDatumDto: UpdateBioDatumDto) {
-    return `This action updates a #${id} bioDatum`;
+  async update(id: number, updateBioDatumDto: UpdateBioDatumDto) {
+    //return `This action updates a #${id} bioDatum`;
+    return await this.BiodataRepository.update(id, updateBioDatumDto);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} bioDatum`;
+  async remove(id: number) {
+    //return `This action removes a #${id} bioDatum`;
+    return await this.BiodataRepository.delete(id);
   }
 }
+
+

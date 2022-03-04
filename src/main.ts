@@ -30,6 +30,6 @@ nunjucks.configure(views, { express });
 const staticAssets = join(__dirname, '..', 'static');
 app.useStaticAssets(staticAssets);
 
-await app.listen(3002);
+await app.listen(3008);
 }
 bootstrap();

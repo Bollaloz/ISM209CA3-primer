@@ -1,26 +1,37 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { CreateLinkedIdentityDto } from './dto/create-linked-identity.dto';
 import { UpdateLinkedIdentityDto } from './dto/update-linked-identity.dto';
-
+import { LinkedIdentity } from './entities/linked-identity.entity';
 @Injectable()
 export class LinkedIdentityService {
-  create(createLinkedIdentityDto: CreateLinkedIdentityDto) {
-    return 'This action adds a new linkedIdentity';
+  constructor(
+    @InjectRepository(LinkedIdentity)
+    private LinkedIdentityRespository: Repository <LinkedIdentity>
+  ){}
+  async create(createLinkedIdentityDto: CreateLinkedIdentityDto) {
+   // return 'This action adds a new linkedIdentity';
+   return this.LinkedIdentityRespository.save(new LinkedIdentity);
   }
 
-  findAll() {
-    return `This action returns all linkedIdentity`;
+  async findAll() {
+   // return `This action returns all linkedIdentities`;
+   return await this.LinkedIdentityRespository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} linkedIdentity`;
+  async findOne(id: number) {
+    //return `This action returns a #${id} linkedIdentity`;
+    return await this.LinkedIdentityRespository.findOne();
   }
 
-  update(id: number, updateLinkedIdentityDto: UpdateLinkedIdentityDto) {
-    return `This action updates a #${id} linkedIdentity`;
+  async update(id: number, updateLinkedIdentityDto: UpdateLinkedIdentityDto) {
+   // return `This action updates a #${id} linkedIdentity`;
+   return await this.LinkedIdentityRespository.update(id,new UpdateLinkedIdentityDto);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} linkedIdentity`;
+  async remove(id: number) {
+   // return `This action removes a #${id} linkedIdentity`;
+   return await this.LinkedIdentityRespository.delete(id);
   }
 }
