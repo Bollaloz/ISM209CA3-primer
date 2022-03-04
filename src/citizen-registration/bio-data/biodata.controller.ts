@@ -6,16 +6,18 @@ import { UpdateBioDatumDto } from './dto/update-bio-datum.dto';
 @Controller('bio-data')
 export class BioDataController {
   constructor(private readonly bioDataService: BioDataService) {}
+  
+  @Get('create')
+  @Render('citizens-biodata/create-citizensbiodata.html')
+  createForm() {
+  }
 
   @Post()
   create(@Body() createBioDatumDto: CreateBioDatumDto) {
     return this.bioDataService.create(createBioDatumDto);
   }
 
-  @Get('create')
-  @Render('citizens-biodata/create-citizensbiodata.html')
-  createForm() {
-  }
+  
 
   @Get()
   findAll() {

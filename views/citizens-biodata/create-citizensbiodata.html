@@ -12,7 +12,7 @@
                 <a href="/about-us">About Us</a>
             </div>
             <div>
-                <a href="/citizens-biodata/create" class="active">Register NIN</a>
+                <a href="/bio-data/create" class="active">Register NIN</a>
             </div>
         </div>
         <div class="navigation-bar-right">
@@ -24,7 +24,7 @@
         </div>
     </div>
     <div class="grid-item-row-2">
-        <form class="box" id="RegisterNINForm" action="/citizens-biodata" method="POST">
+        <form class="box" id="RegisterNINForm" action="/bio-data" method="POST">
             <fieldset id="RegisterNINFormFieldSet" class="container">
                 <div class="field">
                     <label class="label">First name:</label>
@@ -73,18 +73,40 @@
                     <div class="control has-icons-right">
                         <input class="input" id="stateOfbirth" name="stateOfbirth" type="text" placeholder="stateOfbirth">
                     </div>
+                    </div>
                     <div class="field">
                         <label class="label">townOfbirth:</label>
                         <div class="control has-icons-right">
                             <input class="input" id="townOfbirth" name="townOfbirth" type="text" placeholder="townOfbirth">
+                        </div>
                         </div>
                         <div class="field">
                             <label class="label">Profession:</label>
                             <div class="control has-icons-right">
                                 <input class="input" id="Profession" name="Profession" type="text" placeholder="Profession">
                             </div>
+                        </div>
                 
-                <div class="field is-grouped">
+                            <div class="field">
+                                <label class="label">NIN:</label>
+                                <div class="control has-icons-right">
+                                    <input class="input" id="NIN" name="NIN" type="number" placeholder="NIN" required>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">BVN:</label>
+                                <div class="control has-icons-right">
+                                    <input class="input" id="BVN" name="BVN" type="number" placeholder="BVN" required>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">Mobile Number:</label>
+                                <div class="control has-icons-right">
+                                    <input class="input" id="Mobile Number" name="Mobile Number" type="number" placeholder="Mobile Number">
+                                </div>
+                            </div>  
+                            
+                            <div class="field is-grouped">
                     <div class="control">
                         <button type="submit" id="submitRegisterNINForm" class="button is-link is-small">Submit</button>
                     </div>
@@ -92,6 +114,11 @@
                         <button type="reset" class="button is-light is-small">Clear</button>
                     </div>
                 </div>
+                <div class="grid-item-row-2">
+                    <form class="box" id="RegisterNINForm" action="/linked-identity" method="POST">
+                        <fieldset id="RegisterNINFormFieldSet" class="container">
+                        </div>
+                    </div>
             </fieldset>
         </form>
         
@@ -153,6 +180,9 @@
     const townOfbirth = document.getElementById('townOfbirth').value;
     const Profession = document.getElementById('Profession').value;
     const Residenceaddress = document.getElementById('Residenceaddress').value;
+    const Residenceaddress = document.getElementById('NIN').value;
+    const Residenceaddress = document.getElementById('BVN').value;
+    const Residenceaddress = document.getElementById('mobileNumber').value;
 
 
     //start the button spinner
@@ -165,7 +195,7 @@
             'Content-Type': 'application/json'
         },
         //credentials: 'same-origin',
-        body: JSON.stringify({ firstName, middleName, lastName, townOfbirth, dateOfBirth, nationality, Residenceaddress, countryOfBirth, stateOfbirth, Profession })
+        body: JSON.stringify({NIN, BVN, mobileNumber:{ firstName, middleName, lastName, townOfbirth, dateOfBirth, nationality, Residenceaddress, countryOfBirth, stateOfbirth, Profession }})
     }
 
     //call fetch
