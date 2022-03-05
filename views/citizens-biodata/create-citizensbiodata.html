@@ -179,10 +179,10 @@
     const stateOfbirth = document.getElementById('stateOfbirth').value;
     const townOfbirth = document.getElementById('townOfbirth').value;
     const Profession = document.getElementById('Profession').value;
-    const Residenceaddress = document.getElementById('Residenceaddress').value;
-    const Residenceaddress = document.getElementById('NIN').value;
-    const Residenceaddress = document.getElementById('BVN').value;
-    const Residenceaddress = document.getElementById('mobileNumber').value;
+    const ResidenceAddress = document.getElementById('Residenceaddress').value;
+    const NIN = document.getElementById('NIN').value;
+    const BVN = document.getElementById('BVN').value;
+    const MobileNumber = document.getElementById('MobileNumber').value;
 
 
     //start the button spinner
@@ -195,7 +195,7 @@
             'Content-Type': 'application/json'
         },
         //credentials: 'same-origin',
-        body: JSON.stringify({NIN, BVN, mobileNumber:{ firstName, middleName, lastName, townOfbirth, dateOfBirth, nationality, Residenceaddress, countryOfBirth, stateOfbirth, Profession }})
+        body: JSON.stringify({NIN, BVN, MobileNumber, biodatum: { firstName, middleName, lastName, townOfbirth, dateOfBirth, nationality, ResidenceAddress, countryOfBirth, stateOfbirth, Profession }})
     }
 
     //call fetch

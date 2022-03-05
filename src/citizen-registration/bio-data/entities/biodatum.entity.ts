@@ -1,4 +1,6 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { LinkedIdentity } from "src/citizen-registration/linked-identity/entities/linked-identity.entity";
+import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+
 @Entity()
 
 export class Biodatum {
@@ -24,15 +26,19 @@ export class Biodatum {
     countryOfBirth: string;
 
     @Column({nullable: true})
-    stateOfBirth: string;
+    stateOfbirth: string;
 
     @Column({nullable: true})
-    townOfBirth: string;
+    townOfbirth: string;
 
     @Column({nullable: true})
-    resideneAddress: string;
+    ResidenceAddress: string;
 
     @Column({nullable: true})
-    profession: string;
+    Profession: string;
 
+    @OneToOne(type => LinkedIdentity, linkedIdentity => linkedIdentity.biodatum)
+    linkedIdentity: LinkedIdentity;
 }
+
+

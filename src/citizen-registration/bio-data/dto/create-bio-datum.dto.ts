@@ -7,6 +7,6 @@ export class CreateBioDatumDto {
         readonly countryOfBirth: string;
         readonly stateOfBirth: string;
         readonly townOfBirth: string;
-        readonly residenceAddress: string;
+        readonly ResidenceAddress: string;
         readonly profession: string;
 }

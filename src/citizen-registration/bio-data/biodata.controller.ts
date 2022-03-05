@@ -17,7 +17,6 @@ export class BioDataController {
     return this.bioDataService.create(createBioDatumDto);
   }
 
-  
 
   @Get()
   findAll() {
